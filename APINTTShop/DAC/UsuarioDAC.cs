@@ -96,7 +96,7 @@ namespace APINTTShop.DAC
                     user.CodigoPostal = usuario.CodigoPostal;
                     user.Telefono = usuario.Telefono;
                     //user.Email = usuario.Email;
-                    //user.IsoIdioma = usuario.IsoIdioma;
+                    user.IsoIdioma = usuario.IsoIdioma;
                     user.IdRate = usuario.IdRate;
 
                     context.SaveChanges();
