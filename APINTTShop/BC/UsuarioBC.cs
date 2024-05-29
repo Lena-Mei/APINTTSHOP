@@ -33,6 +33,27 @@ namespace APINTTShop.BC
             return login;
         }
 
+        public BaseResponseModel UpdateEmail(int idUsuario, string email)
+        {
+            BaseResponseModel result = new BaseResponseModel();
+            int resultado = usuarioDAC.UpdateEmail(idUsuario, email);
+            if (resultado == 1)
+            {
+                result.httpStatus = System.Net.HttpStatusCode.OK;
+            }
+            else if(resultado == -1)
+            {
+                result.httpStatus = System.Net.HttpStatusCode.NotFound;
+                result.message = "No existe un usuario con el id Introducido";
+            }
+            else
+            {
+                result.httpStatus = System.Net.HttpStatusCode.BadRequest;
+                result.message = "Ya existe un correo registrado. Inserte otro";
+            }
+            return result;
+        }
+
         public BaseResponseModel GetUsuario (int request)
         {
             IdUsuarioResponse result = new IdUsuarioResponse();

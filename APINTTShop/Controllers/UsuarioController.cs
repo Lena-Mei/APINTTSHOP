@@ -71,6 +71,15 @@ namespace APINTTShop.Controllers
         }
 
         [HttpPut]
+        [Route("updateEmail")]
+        public ActionResult<BaseResponseModel> UpdateEmail(int idUsuario, string correo)
+        {
+            BaseResponseModel result = usuarioBC.UpdateEmail(idUsuario, correo);
+
+            return _httpHandleResponse.HandleResponse(result);
+        }
+
+        [HttpPut]
         [Route("updateContrasenya")]
         public ActionResult<BaseResponseModel> UpdateContrasenya(int idUsuario, string contrasenya)
         {

@@ -170,5 +170,33 @@ namespace APINTTShop.DAC
             }
             return gesUser;
         }
+
+        public int UpdateEmail(int idGesUsuario, string correo)
+        {
+            try
+            {
+                var user = context.Gestionusuarios.FirstOrDefault(u => u.IdUsuario == idGesUsuario);
+                var email = context.Gestionusuarios.FirstOrDefault(u => u.Email == correo);
+
+                if (user == null)
+                {
+                    return -1;
+                }
+                else if (email != null) //existe correo
+                {
+                    return -2;
+                }
+                else
+                {
+                    user.Email = correo;
+                    context.SaveChanges();
+                    return 1;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message, ex);
+            }
+        }
     }
 }

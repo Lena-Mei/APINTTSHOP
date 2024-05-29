@@ -25,6 +25,17 @@ namespace APINTTShop.Controllers
             return _httpHandleResponse.HandleResponse(result);
         }
 
+
+
+        [HttpPut]
+        [Route("updateEmail")]
+        public ActionResult<BaseResponseModel> UpdateEmail(int idUsuario, string correo)
+        {
+            BaseResponseModel result = gesUsuarioBC.UpdateEmail(idUsuario, correo);
+
+            return _httpHandleResponse.HandleResponse(result);
+        }
+
         [HttpGet]
         [Route("getAllGesUsuario")]
         public ActionResult<ListaGesUsuarioResponse> GetAllGesUsuario()
